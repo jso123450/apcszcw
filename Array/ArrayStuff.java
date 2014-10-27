@@ -39,7 +39,7 @@ public class ArrayStuff {
 
     public int find(int n){
 	int output;
-	for (int i = 0; int < a.length; i++){
+	for (int i = 0; i < a.length; i++){
 	    if (a[i] == n){
 		output = i;
 	    }
@@ -51,7 +51,7 @@ public class ArrayStuff {
 
     public int maxVal(){
 	int output = 0;
-	for (int i = 0; int < a.length; i++){
+	for (int i = 0; i < a.length; i++){
 	    if (a[i] > output){
 		output = a[i];
 	    }
