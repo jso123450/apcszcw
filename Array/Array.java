@@ -51,5 +51,12 @@ class Ademo {
 	for (int i = 0; i < stringArray.length; i++){
 	    System.out.println(stringArray[i]+ " ");
 	}
+	System.out.println();
+
+	String[] messages = {
+	    "feast your eyes",
+	    "gaze into the abyss",
+	    "look at me I am..."
+	}
     }
 }
