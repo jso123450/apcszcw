@@ -37,11 +37,37 @@ public class ArrayStuff {
 	return s;
     }
 
+    public int find(int n){
+	int output;
+	for (int i = 0; int < a.length; i++){
+	    if (a[i] == n){
+		output = i;
+	    }
+	    i = a.length;
+	}
+        output = -1;
+	return output;
+    }
+
+    public int maxVal(){
+	int output = 0;
+	for (int i = 0; int < a.length; i++){
+	    if (a[i] > output){
+		output = a[i];
+	    }
+	}
+	return output;
+    }
+
     /*-----------------------------Main Method-------------------------------*/
     
     public static void main(String[] args){
 	ArrayStuff as = new ArrayStuff();
 	System.out.println(as);
+	System.out.println();
+	System.out.println( as.find(5) );
+	System.out.println();
+	System.out.println( as.maxVal() );
     }
 
 }
