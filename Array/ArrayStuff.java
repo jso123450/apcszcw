@@ -38,14 +38,13 @@ public class ArrayStuff {
     }
 
     public int find(int n){
-	int output;
+	int output = -1;
 	for (int i = 0; i < a.length; i++){
 	    if (a[i] == n){
 		output = i;
+		i = a.length;
 	    }
-	    i = a.length;
 	}
-        output = -1;
 	return output;
     }
 
@@ -65,7 +64,7 @@ public class ArrayStuff {
 	ArrayStuff as = new ArrayStuff();
 	System.out.println(as);
 	System.out.println();
-	System.out.println( as.find(5) );
+	System.out.println( as.find(100) );
 	System.out.println();
 	System.out.println( as.maxVal() );
     }
