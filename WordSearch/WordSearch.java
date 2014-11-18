@@ -14,6 +14,8 @@ public class WordSearch {
 	board = new char[r][c];
 	for (int i = 0; i < board.length; i++){
 	    for (int j = 0; j < board[i].length; j++){
+		// . is used as a placeholder; default value is null
+		// which is non-printing; not good for testing
 		// single quotes are used for individual characters
 		board[i][j] = '.';
 	    }
