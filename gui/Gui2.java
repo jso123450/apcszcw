@@ -11,17 +11,24 @@ public class Gui2 extends JFrame implements ActionListener {
     private JLabel label;
     private JTextArea text;
     private JPanel canvas;
+    private JCheckBox box;
 
     private class Key implements KeyListener {
 	public void keyPressed(KeyEvent e) {}
 	public void keyReleased(KeyEvent e) {}
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+	    if (box.isSelected()){
+		String s = text.getText();
+		s = s.toUpperCase();
+		text.setText(s);
+	    }
+	}
     }
 
     /*----------------------------- Action -----------------------------*/
     public void actionPerformed(ActionEvent e){
 	if (e.getSource() == b1){
-	    System.out.println("You clicked Click me");
+	    System.out.println("You clicked: Click me");
 	    System.out.println("And the textarea has: " + text.getText());
 	}
 	else if (e.getSource() == b2){
@@ -59,6 +66,11 @@ public class Gui2 extends JFrame implements ActionListener {
 
 	label = new JLabel("The Label");
 	pane.add(label);
+
+	box = new JCheckBox("Cap");
+	box.addKeyListener(new Key());
+	pane.add(box);
+
 	text = new JTextArea();
 	text.setColumns(40);
 	text.setRows(5);
@@ -76,7 +88,7 @@ public class Gui2 extends JFrame implements ActionListener {
     /*----------------------------- Main -----------------------------*/
 
     public static void main(String[] args) {
-	Gui1 f = new Gui1();
+	Gui2 f = new Gui2();
 	f.setVisible(true);
     }
 }
