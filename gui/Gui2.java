@@ -12,6 +12,18 @@ public class Gui2 extends JFrame implements ActionListener {
     private JTextArea text;
     private JPanel canvas;
     private JCheckBox box;
+    private int x = 10;
+    private int y = 10;
+
+    /*---------------------------- Inner Classes ----------------------------*/
+
+    private class Canvas extends JPanel {
+	public void paintComponent(Graphics g){
+	    super.paintComponent(g);
+	    g.setColor(Color.red);
+	    g.fillOval(x,y,30,30);
+	}
+    }
 
     private class Key implements KeyListener {
 	public void keyPressed(KeyEvent e) {}
@@ -30,6 +42,9 @@ public class Gui2 extends JFrame implements ActionListener {
 	if (e.getSource() == b1){
 	    System.out.println("You clicked: Click me");
 	    System.out.println("And the textarea has: " + text.getText());
+	    x+= 10;
+	    y+= 10;
+	    canvas.update(canvas.getGraphics());
 	}
 	else if (e.getSource() == b2){
 	    System.out.println("Shutting down");
