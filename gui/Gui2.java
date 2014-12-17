@@ -1,18 +1,38 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Gui2 extends JFrame implements ActionListener {
 
     /*----------------------------- Instance -----------------------------*/
 
-    private JButton b1,b2;
+    private JButton b1,b2,labeler;
     private Container pane;
     private JLabel label;
-    // private JTextField text;
-    // a JTextField is a single line
     private JTextArea text;
-    private JPanel canvas; // JPanel is the most basic widget; nothing in it
+    private JPanel canvas;
 
+    private class Key implements KeyListener {
+	public void keyPressed(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+    }
+
+    /*----------------------------- Action -----------------------------*/
+    public void actionPerformed(ActionEvent e){
+	if (e.getSource() == b1){
+	    System.out.println("You clicked Click me");
+	    System.out.println("And the textarea has: " + text.getText());
+	}
+	else if (e.getSource() == b2){
+	    System.out.println("Shutting down");
+	    System.exit(0);
+	}
+	else if (e.getSource() == labeler){
+	    label.setText(text.getText());
+	    text.setText("");
+	}
+    }
 
     /*----------------------------- Constructors -----------------------------*/
 
@@ -23,29 +43,27 @@ public class Gui2 extends JFrame implements ActionListener {
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 	pane = getContentPane();
-	//pane.setLayout(new GridLayout(3,3));
 	pane.setLayout(new FlowLayout());
 
 	b1 = new JButton("Click me");
-	pane.add(b1); // fills a whole section
-	b2 = new JButton("Exit");
-	pane.add(b2);
+	b1.addActionListener(this);
+	pane.add(b1);
+
+	//b2 = new JButton("Exit");
+	//b2.addActionListener(this);
+	//pane.add(b2);
 	
-	//	JPanel buttongrid = new JPanel();
-	//	buttongrid.setLayout(new GridLayout(3,3));
-	//	buttongrid.add(new JButton("button 0"));
-	//	buttongrid.add(new JButton("button 1"));
-	//	buttongrid.add(new JButton("button 2"));
-	//	buttongrid.add(new JButton("button 3"));
-	//	buttongrid.add(new JButton("button 4"));
-	//	pane.add(buttongrid);
-	
+	labeler = new JButton("Labeler");
+	labeler.addActionListener(this);
+	pane.add(labeler);
+
 	label = new JLabel("The Label");
 	pane.add(label);
 	text = new JTextArea();
 	text.setColumns(40);
 	text.setRows(5);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	text.addKeyListener(new Key());
 	pane.add(text);
 
 	canvas = new JPanel();
@@ -53,6 +71,7 @@ public class Gui2 extends JFrame implements ActionListener {
 	canvas.setBorder(BorderFactory.createLineBorder(Color.blue,2));
 	pane.add(canvas);
     }
+
 
     /*----------------------------- Main -----------------------------*/
 
