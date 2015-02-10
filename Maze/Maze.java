@@ -5,6 +5,11 @@ public class Maze {
     private char[][] board;
     private int maxX;
     private int maxY;
+    private char wall = ' ';
+    private char exit = '$';
+    private char path = '#';
+    private char me = 'z';
+    private char visited = '.';
 
     public Maze(){
         maxX = 40;
@@ -38,10 +43,30 @@ public class Maze {
 	return s;
     }
 
+    public void solve(int x, int y){
+	try {
+	    Thread.sleep(25);
+	} catch (Exception e){}
+	if (board[x][y] == exit){
+	    System.out.println(this);
+	    System.exit(0);
+	}
+	if (board[x][y] != path)
+	    return;
+	System.out.println(this);
+	System.out.println("(" + x + "," + y + ")");
+        board[x][y] = me;
+	solve(x+1,y);
+	solve(x-1,y);
+	solve(x,y+1);
+	solve(x,y-1);
+	board[x][y] = visited;
+    }
+
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-    
+	m.solve(1,1);
     }
 
 }
