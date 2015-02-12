@@ -10,14 +10,15 @@ public class Maze {
     private char path = '#';
     private char me = 'z';
     private char visited = '.';
+    private boolean solved = false;
 
     public Maze(){
+	// instantiate variables
         maxX = 40;
         maxY = 20;
         board = new char[maxX][maxY];
-    
+	// read in (load) the maze
 	try {
-      
 	    Scanner sc = new Scanner(new File("maze.dat"));
 	    int j = 0;
 	    while (sc.hasNext()){
@@ -29,10 +30,17 @@ public class Maze {
 		j++;
 	    }
 	}
-	catch (Exception e){}
-    
+	catch (Exception e){} // do nothing
     }
 
+    // gives a delay of n milliseconds
+    public void wait(int n){
+	try {
+	    Thread.sleep(n);
+	} catch (Exception e){} // do nothing
+    }
+
+    // print out the maze
     public String toString(){
 	String s = "[2J\n";
 	for (int y = 0; y < maxY; y++){
@@ -43,24 +51,27 @@ public class Maze {
 	return s;
     }
 
+    // a type of Path Finding
+    //    known as a blind/exhaustive/depth first/linear/recursive/backtracking search
+    //    this tries basically all the possibilities
+    //    possible until we reach the end
     public void solve(int x, int y){
-	try {
-	    Thread.sleep(25);
-	} catch (Exception e){}
 	if (board[x][y] == exit){
 	    System.out.println(this);
-	    System.exit(0);
+	    solved = true;
 	}
-	if (board[x][y] != path)
+	if (board[x][y] != path || solved)
 	    return;
 	System.out.println(this);
 	System.out.println("(" + x + "," + y + ")");
+	wait(50);
         board[x][y] = me;
 	solve(x+1,y);
 	solve(x-1,y);
 	solve(x,y+1);
 	solve(x,y-1);
-	board[x][y] = visited;
+	if (!solved)
+	    board[x][y] = visited;
     }
 
     public static void main(String[] args){
