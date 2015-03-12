@@ -27,4 +27,8 @@ public class Node {
 	return data;
     }
 
+    public void getRest(){
+	for (Node tmp = this; tmp != null; tmp = tmp.getNext())
+	    System.out.println(tmp);
+    }
 }
