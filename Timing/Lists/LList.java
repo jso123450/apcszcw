@@ -14,7 +14,7 @@ public class LList {
     private int len = 0;
 
     public LList(){
-	l = new Node("");
+	l = new Node(0);
     }
 
     public void checkIndex(int i){

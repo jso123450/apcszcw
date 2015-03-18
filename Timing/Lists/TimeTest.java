@@ -56,12 +56,13 @@ public class TimeTest{
 	*/
 
         TimeTest t = new TimeTest();
-        t.setupAL(100);
+        t.setupAL(10000);
 	long start, elapsed;
 	start = System.currentTimeMillis();
-	t.sumAL();
+	int sumAL = t.sumAL();
 	elapsed = System.currentTimeMillis() - start;
 	System.out.println(elapsed);
+	System.out.println(sumAL);
 	t.setupLL(100);
     }
 

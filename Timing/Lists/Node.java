@@ -4,7 +4,7 @@ public class Node {
     private Node next;
 
     public Node(){
-	this("");
+	this(0);
     }
 
     public Node(int d){
@@ -29,7 +29,7 @@ public class Node {
     }
 
     public String toString(){
-	return data;
+	return data + "";
     }
 
     public void getRest(){
