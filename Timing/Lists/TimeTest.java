@@ -33,6 +33,10 @@ public class TimeTest{
 	return sum;
     }
 
+    public LList getLL(){
+	return LL;
+    }
+
     public void setupBILL(int len){
 	for (int i = 0; i < len; i++)
 	    biLL.add(r.nextInt(11));
@@ -56,14 +60,38 @@ public class TimeTest{
 	*/
 
         TimeTest t = new TimeTest();
-        t.setupAL(10000);
+	int len = 100000;
 	long start, elapsed;
+
+	System.out.println("Lists with Lengths of " + len);
+
+        t.setupAL(len);
+	System.out.println("ArrayList Sum");
 	start = System.currentTimeMillis();
 	int sumAL = t.sumAL();
 	elapsed = System.currentTimeMillis() - start;
-	System.out.println(elapsed);
-	System.out.println(sumAL);
-	t.setupLL(100);
+	System.out.println("Time Elapsed: " + elapsed + " ms");
+
+	System.out.println();
+
+	t.setupLL(len);
+	System.out.println("Our LinkedList Sum");
+	start = System.currentTimeMillis();
+	int sumLL = t.sumLL();
+	elapsed = System.currentTimeMillis() - start;
+	System.out.println("Time Elapsed: " + elapsed + " ms");
+
+	System.out.println();
+
+	t.setupBILL(len);
+	System.out.println("Built-in LinkedList Sum");
+	start = System.currentTimeMillis();
+	int sumBILL = t.sumBILL();
+	elapsed = System.currentTimeMillis() - start;
+	System.out.println("Time Elapsed: " + elapsed + " ms");
+
+	System.out.println();
+
     }
 
 }

@@ -3,11 +3,12 @@ public class LList {
     // empty list has a dummy node (kept at the start of the linked list)
     // dummy node does not correspond to any index
     // 0 based indexing starts at the node after the dummy
-    // keep track of length in an instance var
+    // keeps track of length in an instance var
     // add(String) -> still adds at the front
     // add(index, String) -> adds Node with String at index
     // find -> get
     // remove(index) -> removes & returns node at specified index
+    // remove(int) -> removes the first node in the list with value int
 
     // l is the Node at the start of the linked list
     private Node l;
@@ -68,6 +69,25 @@ public class LList {
 	placeholder.setNext( placeholder.getNext().getNext() );
 	len--;
 	return d;
+    }
+
+    public boolean removeFirstOccur(int data){
+	checkIndex(data);
+	int i = 0;
+	int index = -1;
+	Node placeholder = l.getNext();
+	for ( ; i < len; i++){
+	    if (placeholder.getData() == data){
+		index = i;
+		break;
+	    }
+	    else
+		placeholder = placeholder.getNext();
+	}
+	if (index != -1)
+	    return true;
+	else
+	    return false;
     }
 
     public int getLen(){
