@@ -1,35 +1,37 @@
-public class Node {
+public class Node<E>{
 
-    private String data;
-    private Node next;
+    private E data;
+    private Node<E> next;
 
-    public Node(String s){
+    // no <E> in constructor
+    public Node(){
+	data = null;
+	next = null;
+    }
+
+    public Node(E s){
 	data = s;
 	next = null;
     }
 
-    public void setData(String s){
+    public void setData(E s){
 	data = s;
     }
 
-    public String getData(){
+    public E getData(){
 	return data;
     }
 
-    public void setNext(Node n){
+    public void setNext(Node<E> n){
 	next = n;
     }
 
-    public Node getNext(){
+    public Node<E> getNext(){
 	return next;
     }
 
     public String toString(){
-	return data;
+	return ""+data;
     }
 
-    public void getRest(){
-	for (Node tmp = this; tmp != null; tmp = tmp.getNext())
-	    System.out.println(tmp);
-    }
 }
