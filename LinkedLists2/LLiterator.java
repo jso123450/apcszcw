@@ -30,9 +30,14 @@ public class LLiterator<E> implements Iterator<E>{
 	// already been called after the last call to next
 	if (lastElemRet == null)
 	    throw new IllegalStateException();
-	
-        // remove
-	lastElemRet = null;
+        Node<E> tmp = l;
+	while (tmp.hasNext()){
+	    if (tmp.getData() == lastElemRet){
+		lastElemRet = null;
+		return lastElemRet;
+	    }
+	    tmp = tmp.getNext();
+	}
     }
 
 
