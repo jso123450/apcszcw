@@ -4,14 +4,16 @@ import java.util.*;
 public class LLiterator<E> implements Iterator<E>{
 
     private Node<E> l;
-    private E lastElemRet;
+    private Node<E> lprev;
+    private boolean removeisValid = false;
 
     public LLiterator(Node<E> n){
 	l = n;
+	lprev = n;
     }
 
     public boolean hasNext(){
-	return l != null;
+	return l.getNext() != null;
     }
 
     /*
@@ -20,24 +22,20 @@ public class LLiterator<E> implements Iterator<E>{
     */
     public E next(){
 	E data = l.getData();
+        removeisValid = true;
+	lprev = l;
 	l = l.getNext();
-	lastElemRet = data;
 	return data;
     }
     
     public void remove() {
 	// if next has not yet been called or remove has
 	// already been called after the last call to next
-	if (lastElemRet == null)
+	if (!(removeisValid))
 	    throw new IllegalStateException();
-        Node<E> tmp = l;
-	while (tmp.hasNext()){
-	    if (tmp.getData() == lastElemRet){
-		lastElemRet = null;
-		return lastElemRet;
-	    }
-	    tmp = tmp.getNext();
-	}
+	lprev.setNext( l.getNext() );
+	l = l.getNext();
+	removeisValid = false;
     }
 
 
