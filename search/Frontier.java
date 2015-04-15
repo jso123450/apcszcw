@@ -17,5 +17,8 @@ public class Frontier {
 	return l.isEmpty();
     }
 
+    public String toString(){
+	return Arrays.toString( l.toArray() );
+    }
     
 }
