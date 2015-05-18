@@ -1,0 +1,14 @@
+Hashing / Hash Tables
+- we want to store things in a table by index (array)
+- we have to take a unique ID and convert it into a table index to store it
+- hash function h(x) is a mapping function
+  it takes a piece of information and converts it into an index to our hash table
+  ie. OSIS #s
+      h(x) = x % 10,000 (converts OSIS to a 4 digit index)
+      h(x) = 7 (v. nice hash function)
+
+Problem: Clash/Collision
+- multiple objects can hash to the same slot/index
+- Resolutions
+  - hash table's array has to be sufficiently large (sparsely populated)
+  - hash function should do a good job distributing items in the table
